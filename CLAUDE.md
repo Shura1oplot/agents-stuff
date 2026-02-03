@@ -99,4 +99,7 @@ Use:
 - `set -euo pipefail` is a must
 - Use `shellcheck`
 
+<metadata>
+<update-date>2026-02-03</update-date>
+</metadata>
 </users-managed>
