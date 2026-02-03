@@ -76,6 +76,7 @@ Use:
 - `pydantic` instead of `dataclass`
 - Use `from dotenv import load_dotenv; _ = load_dotenv()` to load `.env`
 - Prefer `httpx` over `requests` or `urllib3`
+- `polars` instead of `pandas` for large files
 
 #### API usage
 
