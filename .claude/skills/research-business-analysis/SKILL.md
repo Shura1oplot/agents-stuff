@@ -1,14 +1,15 @@
 ---
 name: research-business-analysis
-description: How to do research for benchmarking, financial and economic modeling, and other business analysis tasks.
+description: Business Analyst for research execution. Three capabilities - (1) Research methodology for benchmarking, modeling, data gathering; (2) Web scraping via Firecrawl; (3) Russian financial data extraction (IFRS/GAAP/RAS/МСФО/РСБУ). Use for data collection, source evaluation, financial analysis.
 ---
+
+<users-managed>
 
 # Skill
 
 These are basic principles for conducting research for financial and economic modeling, benchmarking, and other business-analysis information-gathering tasks.
 
-
-## Definition of modeling
+## Definition of Modeling
 
 A model is a simplified representation of a real-world (business) process, developed to solve a specific business problem and support a decision.
 
@@ -17,8 +18,7 @@ Key success factors:
 - Clearly define the problem and success criteria.
 - Choose the right level of simplification: not too simple to miss required precision; not so complex that it becomes overkill.
 
-
-## Core modeling principles
+## Core Modeling Principles
 
 Consider the following:
 
@@ -26,8 +26,7 @@ Consider the following:
 - SISO a.k.a. GIGO (Garbage In, Garbage Out): model output quality is bounded by input quality.
 - Time sensitivity: facts are time-dependent. Example: in 2025, using a 2023 forecast as a “fact” is usually wrong unless explicitly treated as a forecast.
 
-
-## Generic model structure
+## Generic Model Structure
 
 1. Inputs
    - Historical data: a digital representation of the real-world business process.
@@ -35,14 +34,13 @@ Consider the following:
 2. Business logic: mathematical formulas based on the chosen methodology.
 3. Outputs
 
-
-## Modeling process
+## Modeling Process
 
 1. Plan the model
    - Identify the problem the model is intended to solve and the decision it will support.
    - Form hypotheses to test.
    - Define criteria (e.g., thresholds).
-   - Define scope (e.g., geography, segments, timeframes), requirements (e.g., precision), and constraints (e.g., exclude re-export flows; include only maritime transport because it dominates).
+   - Define scope (e.g., geography, segments, timeframes), requirements (e.g., precision), and constraints.
    - Select a methodology/approach/framework. Prefer simpler approaches that meet requirements.
    - Design the model structure.
    - Identify required data.
@@ -94,9 +92,9 @@ Data sources by reputability (descending):
 6. Business consulting firms.
 7. Public media (press releases, expert interviews).
 8. Expert interviews conducted by a business analyst.
-9. Data collected by a business analyst via observation (e.g., 1–5 events).
+9. Data collected by a business analyst via observation.
 
-Prefer primary sources. Example: if you find a consulting outlook, follow its references to the underlying primary sources and use those.
+Prefer primary sources. If you find a consulting outlook, follow its references to the underlying primary sources.
 
 Assumptions by credibility (descending):
 1. Forecasts from specialized analytics agencies.
@@ -132,7 +130,7 @@ While collecting data:
 
 ##### Assess data quality
 
-###### Technical criteria
+###### Technical Criteria
 
 1. Completeness: data covers:
    - The full period.
@@ -151,7 +149,7 @@ While collecting data:
 
 Based on this, estimate data reliability.
 
-###### Business criteria
+###### Business Criteria
 
 1. Correctness: how precisely the data reflects real business events (amounts, quantities).
 2. Timeliness: how promptly events are recorded in the database.
@@ -159,18 +157,18 @@ Based on this, estimate data reliability.
 
 Based on this, estimate data credibility.
 
-##### Make the data suitable for analysis
+##### Data Preparation for analysis
 
 1. Make figures comparable:
-   - Units (including domain-specific units).
-   - Scale (thousand/million/billion, etc.).
-   - Currency.
-   - Timeframe (calendar vs fiscal year).
-   - Accounting standard.
-   - Actual vs estimate vs forecast.
-   - Inclusion/exclusion rules.
-   - Nominal vs real prices.
-   - For ranges: choose average or median based on methodology/context.
+   - Units (including domain-specific units)
+   - Scale (thousand/million/billion)
+   - Currency
+   - Timeframe (calendar vs fiscal year)
+   - Accounting standard
+   - Actual vs estimate vs forecast
+   - Inclusion/exclusion rules
+   - Nominal vs real prices
+   - For ranges: choose average or median based on methodology/context
 
 Log all conversions and state all coefficients used (e.g., FX rates, inflation assumptions).
 
@@ -184,7 +182,7 @@ Log all conversions and state all coefficients used (e.g., FX rates, inflation a
    - Avoid losing important context-specific details, e.g., net/gross weight (tonnes), gross/net values, pork weights in Live Weight Equivalent (LWE) vs Carcass Weight Equivalent (CWE) vs Retail Weight Equivalent (RWE), IFRS vs GAAP vs RAS, with/without VAT. Anticipate what may matter later.
 
 
-#### Output format
+## Output Format
 
 - Source registry (data inventory): one row per source.
 - Extraction notes: what exactly was taken from each source (tables/fields).
@@ -223,8 +221,13 @@ Guidelines:
 - Clearly separate **what the source states** from **your inference**.
 
 
-## Analyst mindset
+## Analyst Mindset
 
 Be: expert, professional, efficient, concise, straightforward, blunt, clinical, rationally skeptical, unbiased, structured, fact-driven, pragmatic, curious, disciplined.
 
 Avoid: hype, sugar-coating, soft selling, jargon, excessive enthusiasm.
+
+<metadata>
+<update-date>2026-02-03</update-date>
+</metadata>
+</users-managed>
