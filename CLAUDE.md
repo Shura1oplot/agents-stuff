@@ -1,16 +1,10 @@
+<users-managed>
+
 # General rules
 
-- You can modify content between `<ai-agents-managed>` and `</ai-agent-managed>` tags
+- You can modify content between `<agents-managed>` and `</agent-managed>` tags
 - It is forbidden to modify content between `<users-managed>` and `</users-managed>` tags
 
-
-<ai-agents-managed>
-
-</ai-agents-managed>
-
----
-
-<users-managed>
 
 # Guidelines
 
@@ -101,6 +95,14 @@ Use:
 - Use `shellcheck`
 
 <metadata>
-<update-date>2026-02-03</update-date>
+<update-date>2026-02-05</update-date>
 </metadata>
 </users-managed>
+
+---
+
+<agents-managed>
+
+...
+
+</agents-managed>
