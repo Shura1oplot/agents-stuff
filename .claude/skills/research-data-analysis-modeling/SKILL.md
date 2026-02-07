@@ -1,5 +1,5 @@
 ---
-name: research-business-analysis
+name: research-data-analysis-modeling
 description: Business Analyst for research execution. Three capabilities - (1) Research methodology for benchmarking, modeling, data gathering; (2) Web scraping via Firecrawl; (3) Russian financial data extraction (IFRS/GAAP/RAS/МСФО/РСБУ). Use for data collection, source evaluation, financial analysis.
 ---
 
