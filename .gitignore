@@ -219,8 +219,8 @@ main.py
 .venv-docker
 
 node_modules/
-packages.json
-packages-lock.json
+package.json
+package-lock.json
 
 .claude/
 .codex/
