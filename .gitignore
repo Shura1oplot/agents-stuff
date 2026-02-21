@@ -217,6 +217,7 @@ pyproject.toml
 uv.lock
 main.py
 .venv-docker/
+typings/
 
 node_modules/
 package.json

@@ -338,4 +338,109 @@ Make assumption risk explicit and auditable.
 - Integrity checks summary (pass/fail + notes)
 - Sensitivity table (assumption × low/base/high → key output(s))
 
+
+## Reusable modeling playbooks (addendum)
+
+These patterns reduce avoidable errors and make analysis more comparable across domains (market sizing, pricing, cohorts, unit economics, forecasting, logistics/cargo flows).
+
+### Baseline + adjustment factors (structured estimation)
+
+Use when you need an estimate under uncertainty and multiple drivers matter.
+
+1. Choose a baseline (a prior) from the most defensible source available:
+   - Official stats, audited reporting, metered logs, customs/throughput data, etc.
+2. Decompose into adjustment factors that are MECE to avoid double counting:
+   - Coverage factor (what portion of the universe is covered)
+   - Eligibility factor (in-scope vs out-of-scope)
+   - Adoption/penetration factor
+   - Intensity factor (usage per user, load factor, spend per trip, etc.)
+   - Price/yield factor (if relevant)
+3. Quantify each factor as a range when appropriate; record rationale and source/proxy.
+4. Multiply/compose factors; propagate uncertainty (ranges or scenarios).
+
+QC:
+- Each factor must be interpretable and bounded (0–1 for shares; non-negative for rates/volumes).
+- Show that factors do not overlap (e.g., adoption is not also baked into baseline).
+
+
+### Extrapolation guardrails (caps, haircuts, decay)
+
+Use for forecasts, cohorts, diffusion/adoption, growth rates, capacity planning.
+
+- Cap implausible sustained rates; justify with benchmarks/constraints.
+- Apply decay toward steady state unless you have evidence of accelerating dynamics:
+  - Example: growth rate decays over horizon; retention curve flattens; utilization approaches a ceiling.
+- Prefer constraint-aware forms when relevant:
+  - Saturation / logistic adoption; capacity and lead-time constraints; conservation constraints for flows.
+
+QC:
+- Explicitly state what drives long-run steady state (market size, capacity, behavioral limits).
+- Avoid extrapolating through one-off spikes without separating them as events.
+
+
+### Fallback ladders (when data is missing or inconsistent)
+
+For any key variable, define a deterministic fallback hierarchy before you start.
+
+Pattern:
+1. Primary definition (best metric)
+2. Proxy definition (next best, with known bias)
+3. Constructed definition (compose from components)
+4. Benchmark-based estimate (peer range, historical ratio)
+5. Last-resort assumption (explicitly labeled as such)
+
+Rules:
+- Record which rung was used and why.
+- If you use a proxy, quantify expected bias direction and test sensitivity.
+
+
+### Validation gates (thresholds + remediation)
+
+Before finalizing, define 2–5 numeric gates that must pass; if a gate fails, there is a prescribed action.
+
+Examples (domain-agnostic):
+- Reconciliation: top-down vs bottom-up estimates within X% (choose X based on data quality and stakes).
+- Identity checks: totals ≈ sum of parts; shares sum to 100%; flow balance holds within tolerances.
+- Constraint checks: forecast volumes within capacity; prices/margins within feasible bounds; retention non-increasing after day 0 (unless definition implies otherwise).
+- External anchor: compare key totals to an independent benchmark; investigate large deltas.
+
+Remediation playbook:
+- Re-check metric specs and normalization logs first (most common root cause).
+- Re-check join cardinality, duplicates, missingness.
+- Then revise assumptions/ranges; document the revision and its impact.
+
+
+### Archetype templates (common question forms)
+
+Use these as standardized mini-models; they generalize beyond finance.
+
+- Delta vs plan (beat/miss):
+  - `delta = actual − plan`
+  - If plan is a range: compute vs low, vs high, and vs midpoint.
+  - Express in the unit the user asked for (absolute, %, percentage points, bps).
+- Range width (% of midpoint):
+  - `mid = (low + high) / 2`
+  - `%width = (high − low) / mid`
+- CAGR / multi-period growth:
+  - `CAGR = (end / start)^(1/n) − 1` with `n` = number of intervals, not number of points.
+- Driver decomposition (identity-first):
+  - Choose an identity (examples): `Revenue = Units × Price`, `GM = (Price − Unit Cost) / Price`,
+    `Total = Population × Adoption × Intensity`, `Flow = Capacity × Utilization × Yield`.
+  - Compute each component; attribute change to components (and state residual if needed).
+- Cohorts:
+  - Define cohort key + event time; define denominator precisely.
+  - Check monotonicity constraints implied by your definition; explain when exceptions are legitimate.
+- Unit economics:
+  - Separate contribution margin, fixed costs, acquisition cost, retention, and payback.
+  - Cross-check: LTV should not exceed plausible upper bounds implied by price × retention × margin.
+- Flows (cargo/logistics):
+  - Conservation-style checks: inflow − outflow ≈ stock change; route shares sum to 100%.
+  - Capacity utilization and turnaround time must be consistent with observed throughput.
+
+
+### Reporting conventions (for comparability and auditability)
+
+- Standard package: answer → key inputs/assumptions → method → workings/tables → sensitivity → caveats.
+- Tables: keep narrow; put units in headers; one period per row; label “as-of” and timeframe explicitly.
+
 </agents-managed>

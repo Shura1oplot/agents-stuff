@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@openai/codex": "^0.104.0",
-    "firecrawl-cli": "^1.6.2"
-  }
-}
