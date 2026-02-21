@@ -121,13 +121,13 @@ Detect:
 - Propaganda techniques
 
 Examples of potential source bias:
-- Audited reporting can still be distorted; trends may differ under IFRS vs GAAP vs RAS.
-- Government data may be shaped by political incentives.
-- Opposition/independent media can use the same manipulation techniques as state media.
-- Aggregators/research agencies may use oversimplified methods and imprecise assumptions.
-- Experts may be systematically conservative or optimistic.
-- Consultants and vendors may cherry-pick to promote their products/services.
-- Competitor forecasts may be “optimized” for investors/clients.
+- Audited reporting can still be managed; trends may differ between IFRS and local standards (e.g., GAAP, RAS/РСБУ).
+- Government data may reflect political incentives.
+- Specialized agencies can diverge due to methodology differences.
+- Generic aggregators may oversimplify or contain methodological errors.
+- Experts may be too conservative or too optimistic.
+- Consultants may cherry-pick to support commercial narratives.
+- Company forecasts may be optimized for investors or customers.
 
 
 ## 4. Cleanse
