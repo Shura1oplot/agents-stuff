@@ -207,6 +207,8 @@ marimo/_lsp/
 __marimo__/
 
 
+*.sublime-workspace
+
 .DS_Store
 tmp/
 
