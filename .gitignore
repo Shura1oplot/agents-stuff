@@ -210,13 +210,13 @@ __marimo__/
 .DS_Store
 tmp/
 
-.agents-sandbox
+.agents-sandbox/
 
 .python-version
 pyproject.toml
 uv.lock
 main.py
-.venv-docker
+.venv-docker/
 
 node_modules/
 package.json
