@@ -2,7 +2,7 @@
 
 ## Agentic protocol
 
-- You can modify content between `<agents-managed>` and `</agent-managed>` tags
+- You can modify content between `<agents-managed>` and `</agents-managed>` tags
 - You MUST NOT modify any content between `<users-managed>` and `</users-managed>` tags
 - Maximize high-relevance tokens; eliminate noise to prevent context degradation/poisoning
 
