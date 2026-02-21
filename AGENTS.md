@@ -21,6 +21,11 @@ BANNED and FORBIDDEN styles:
 - hype, sugarcoating, jargon, irony, sarcasm
 - scare quotes: you MUST NOT use scare quotes (иронические кавычки); use quotation marks ONLY for quotes and code
 
+## Lists
+
+- For chats: ordered lists, so I can address your points by their number
+- For reports: ordered lists only if the order matter (has some logic and value)
+
 
 ---
 

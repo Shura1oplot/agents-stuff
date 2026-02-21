@@ -256,3 +256,86 @@ BANNED and FORBIDDEN styles:
 <update-date>2026-02-18</update-date>
 </metadata>
 </users-managed>
+
+
+---
+
+
+<agents-managed>
+
+From https://github.com/virattt/dexter
+
+## Validation & QC (addendum)
+
+This addendum complements the existing “Assess data quality” and “Output quality assessment” sections with concrete, auditable QC steps. It is intentionally domain-agnostic (works for finance, ops, product analytics, market sizing, etc.).
+
+### Metric specification (per KPI / variable)
+
+Before calculating anything important, write a short “metric spec” so definitions cannot drift.
+
+Metric spec fields:
+- Name / ID
+- Definition (formula; numerator/denominator where relevant)
+- Units + scale (e.g., $, kg, %, bps; raw, thousands, millions)
+- Grain (entity / segment / geography / time period; fiscal vs calendar)
+- Inclusion/exclusion rules (what is explicitly in and out)
+- Sign conventions (e.g., costs positive vs negative)
+- Required raw fields + source(s)
+- Known caveats (restatements, estimates, gaps, one-offs)
+
+Metric spec QC checks:
+- Dimensionality: units are consistent (e.g., $/unit × units = $)
+- Bounds/constraints: state acceptable ranges (e.g., rates 0–1; totals ≥ parts; high ≥ low)
+- Period alignment: “as-of” date and coverage match the question
+
+
+### Data integrity tests (general)
+
+Run these before analysis; log outcomes as pass/fail with notes.
+
+- Keys: define a primary key for each table; verify uniqueness; investigate duplicates.
+- Joins: state join keys + expected cardinality (1:1, 1:many, many:many). After joining:
+  - Row count check (unexpected blow-ups indicate many:many or duplicate keys).
+  - Unmatched keys review (left-only/right-only).
+- Missingness: quantify missingness per field and per segment/time; decide rule (drop/impute/flag); record the decision.
+- Continuity: for time series, check for gaps/overlaps and sudden jumps; tag structural breaks vs data issues.
+- Outliers: define outlier rules using business logic (not only z-scores). Separate “data error” from “real event”.
+- Hard constraints: non-negativity for physical volumes, valid category sets, monotonic relationships where required, etc.
+
+
+### Arithmetic & logic QC (per output)
+
+For each key output, ensure at least one independent verification path.
+
+- Independent recomputation: recompute via a different method (row-level vs aggregate, alternate formula arrangement, calculator check).
+- Trace sampling: pick a small random sample and trace raw → transformation(s) → output; confirm each step matches the metric spec.
+- Common traps to explicitly test:
+  - Percent vs percentage points vs basis points
+  - Midpoint of a range and % of midpoint
+  - CAGR: correct number of periods; start/end aligned with stated years
+  - Weighted vs simple averages
+  - Rounding and scale drift (K/M/B), currency/unit symbol leakage, sign flips
+
+
+### Sensitivity analysis (assumptions QC)
+
+Make assumption risk explicit and auditable.
+
+1. Identify top 3–5 assumptions that drive the conclusion (ID, base value, rationale, source/proxy).
+2. Set ranges (low/base/high) with justification (history, peer range, policy/physics constraints, measurement error band).
+3. Run both:
+   - One-at-a-time sensitivity (hold others constant)
+   - Scenario table (coherent bundles; avoid incoherent combinations)
+4. Report:
+   - Which assumptions change the decision/recommendation
+   - Break-even threshold(s) where the conclusion flips
+   - Any non-linearities or constraint violations revealed by stress tests
+
+
+### QC artifacts (recommended additions to Output Format)
+
+- Metric specs (one per KPI / key variable)
+- Integrity checks summary (pass/fail + notes)
+- Sensitivity table (assumption × low/base/high → key output(s))
+
+</agents-managed>
