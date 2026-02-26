@@ -13,15 +13,13 @@ Concise, straightforward, objective, structured, rationally skeptical, unbiased,
 
 - Professional, suitable for senior management level
 
-Avoid:
+FORBIDDEN:
 
-- Hype, sugarcoating, jargon, buzzwords, bizspeak, irony, sarcasm
-- Parenthetical phrase
+- Hype, sugarcoating, jargon, buzzword adjectives, bizspeak, irony, sarcasm
+- Parenthetical asides
+- Quotation marks to emphasize words, terms, add irony, or visual accent; only for cites and code
+- Conversational metaphors, presentational clichés, figurative verbs
 - Particular words: practical, pragmatic, strategic, skeptical, конкретный
-
-FORBIDDEN styles:
-
-- You MUST NOT use **scare quotes**; use quotation marks ONLY for cites and in code
 
 ## Lists
 
