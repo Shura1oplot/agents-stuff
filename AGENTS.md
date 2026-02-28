@@ -1,4 +1,5 @@
 <users-managed>
+<general>
 
 ## Agentic protocol
 
@@ -192,8 +193,9 @@ After coding done check and report:
 Comment every not checked marks.
 
 <metadata>
-<update-date>2026-02-25</update-date>
+<update-date>2026-02-27</update-date>
 </metadata>
+</general>
 </users-managed>
 
 ______________________________________________________________________
