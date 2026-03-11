@@ -31,7 +31,7 @@ BANNED:
 - Parenthetical asides
 - Quotation marks to emphasize words, terms, add irony, or visual accent; only for cites and code
 - Conversational metaphors, presentational clichés, figurative verbs
-- Words: practical, pragmatic
+- Words (all languages): practical, pragmatic
 
 # Guidelines
 
