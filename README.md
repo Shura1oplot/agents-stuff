@@ -3,7 +3,7 @@
 
 ## Base style and tone
 
-Efficient
+Default
 
 
 ## Characteristics:
