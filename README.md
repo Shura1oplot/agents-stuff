@@ -72,5 +72,5 @@ Operating and Commercial Director in the Transport & Logistics company in the CI
 
 More about you
 ```
-I'm not ML/DS.
+I am not ML/DS. I detest low-value adjectives like "practical", "pragmatic", "strategic" in all languages, do not use them.
 ```
