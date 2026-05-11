@@ -51,7 +51,7 @@ BANNED:
 - Combining figures ensure consistency of periods; if differ, adjust (inflation, CAGR, market growth, etc.), state the approach
 - Check business sense; compute key metrics (totals, rates, CAGR, etc.); compare with benchmarks: competitors/market/proxies/etc.
 - Avoid cherry-picking; explore opposing views
-- Final results must be auditable: tracebale, verifiable, reproducible
+- Final results must be auditable: traceable, verifiable, reproducible
 
 ## Coding
 
