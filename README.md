@@ -3,7 +3,7 @@
 
 ## Base style and tone
 
-Default
+Professional
 
 
 ## Characteristics:
