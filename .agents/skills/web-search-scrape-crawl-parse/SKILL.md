@@ -1,57 +1,74 @@
 ---
 name: web-search-scrape-crawl-parse
-description: Advanced tools and guidelines for web searching, scraping, crawling (Google, Firecrawl, Tavily, curl, httpx, etc.); parse documents and html
+description: Advanced tools and guidelines for web searching, scraping, crawling (Google, Firecrawl, Tavily, curl, etc.); parse documents and HTML
 ---
+
+Ordered lists are arranged by priority descending.
+
+# Tools availability check
+
+- FireCrawl: `firecrawl` cli tool or `FireCrawl` MCP
+- Browser Use: `browser-use` cli tool or `Browser Use` MCP
+- Cli tools: `curl`, `lit`
+- Agent Browser: `agent-browser`
+
+Report any missing tools/MCPs.
+
+# Skills
+
+Use relevant skills, e.g., `firecrawl-*`.
 
 # Web search
 
 - Use the language of primary sources (например, информацию по российским компаниям ищи на русском языке)
-- You must check availability of the tools:
-  - `firecrawl`, `curl` and `lit` - hard stop if not available or not working properly
-  - other - log any issues
 
-## Available tools
+## Tools
 
-2. `firecrawl` cli tool (serper wrapper); see `firecrawl-*` skills
-1. built-in search
-3. Tavily (`tvly`); see `tavily-*` skills
+1. `firecrawl` (serper wrapper)
+2. built-in search
+3. Tavily (`tvly`)
 
 Combine them for best result.
 
-# Fetch/scrape
+# Fetch and scrape
 
-1. Firecrawl cli tool; see `firecrawl-*` skills
-2. built-in fetch
-3. `curl`, `httpx`
-4. `agent-browser` (see `agent-browser` skill)
-  - Connect to host Chrome, do not run it in docker
-5. `browser-use` (cloud browser)
+1. FireCrawl
+2. Built-in fetch
+3. `curl`
+4. Agent Browser
+5. Browser Use
 
-Notes:
-- Some russian web sites may use a national certificate, disable TLS certificate check in this case
+## Agent Browser
+
+Connect to the host Chrome only; do not run Chrome in docker.
+
+## Notes
+
+- Some russian web sites (e.g., government portals, banks) could use a national certificate; disable TLS certificate check in this case
+- For some Russian web sites (e.g., rzd.ru) there could be regional restrictions, use proxy (including residential)
 
 # Parse/convert to Markdown
 
 - HTML:
-  - `markdownify` cli and python lib (not `python -m markdownify`)
-  - Firecrawl for fetch/scrape
+  1. Defuddle (`npx defuddle`, see [Defuddle on GitHub](https://github.com/kepano/defuddle))
+  2. `markdownify` cli and python lib (not `python -m markdownify`)
+  3. FireCrawl Fetch/scrape
 
 - Documents (pdf/docx/pptx/etc.):
-  - LiteParse (`lit`) by LlamaIndex; see `liteparse*` skills
-  - `markitdown` cli and python lib
-  - Docling through API (http://host.docker.internal:5001); see `docling-serve` skill and read http://host.docker.internal:5001/docs
-  - LlamaParse cloud version; see `llamaparse*` skills
-  - `tesseract`
-  - Avoid using Firecrawl for pdf parsing (too expensive)
+  1. LiteParse (`lit`) by LlamaIndex; see `liteparse*` skills
+  2. `markitdown` cli and python lib
+  3. Docling through API (http://host.docker.internal:5001); see `docling-serve` skill and read http://host.docker.internal:5001/docs
+  4. LlamaParse cloud
+  5. Firecrawl (last option, too expensive)
+  6. `tesseract` (fallback option)
 
-`lit`, `markitdown` - local, fast
+`lit`, `markitdown` - local, fast, no OCR
 `docling` - remote, slow, precise, OCR
 `llamaparse` - best in class, slow, paid
-`tesseract` - only fallback option
 
+- MS Excel (xlsx): `pandas`, `polars`, `openpyxl`
 - Old MS office (doc/ppt/xls): `antiword`, `catdoc`, `catppt`, `xlrd`, etc.
-- xlsx: `pandas`, `openpyxl`
 
 ## Notes
 
-- Doing OCR set correct language(s) (e.g., RU)
+- Doing OCR set correct language(s), e.g., EN or RU
