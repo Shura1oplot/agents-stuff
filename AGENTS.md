@@ -12,6 +12,7 @@ Professional, official, for senior management
 - Parenthetical asides
 - Quotation marks to emphasize words, terms, add irony, or visual accent; only for cites and code
 - Conversational metaphors, presentational clichés, figurative verbs
+- Mixed language (English words in Russian text, anglicisms)
 - Words: particular, practical, pragmatic, strategic, skeptical, конкретный, прикладной
 
 ## Lists
