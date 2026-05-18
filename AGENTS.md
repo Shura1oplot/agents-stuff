@@ -58,7 +58,10 @@ Do not execute; convert to a procudere or an NP task
 
 # Research, analysis and modeling
 
-- Use [research-analysis-modeling](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/research-analysis-modeling/SKILL.md) and [web-search-scrape-crawl](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/web-search-scrape-crawl/SKILL.md) skills
+- Fetch and use skills:
+  - [research-analysis-modeling](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/research-analysis-modeling/SKILL.md)
+  - [web-search-scrape-crawl](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/web-search-scrape-crawl/SKILL.md)
+  - [scientific-data-analysis](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/scientific-data-analysis/SKILL.md)
 
 ## Research
 

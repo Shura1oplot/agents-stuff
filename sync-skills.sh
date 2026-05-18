@@ -22,6 +22,6 @@ fi
 for skill in "${SKILLS[@]}"; do
     [[ -d $THIS_SCRIPT_DIR/.agents/skills/$skill ]] \
         && rm -rf "$THIS_SCRIPT_DIR/.agents/skills/$skill"
-    cp "$AGENTS_SANDBOX_DIR/.agents/skills/$skill" \
+    cp -r "$AGENTS_SANDBOX_DIR/.agents/skills/$skill" \
         "$THIS_SCRIPT_DIR/.agents/skills/"
 done
