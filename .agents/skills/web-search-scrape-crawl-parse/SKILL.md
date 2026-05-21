@@ -11,6 +11,7 @@ Ordered lists are arranged by priority descending.
 - Browser Use: `browser-use` cli tool or `Browser Use` MCP
 - Cli tools: `curl`, `lit`
 - Agent Browser: `agent-browser`
+- Lightpanda Browser: `lightpanda`
 
 Report any missing tools/MCPs.
 
@@ -35,12 +36,17 @@ Combine them for best result.
 1. FireCrawl
 2. Built-in fetch
 3. `curl`
-4. Agent Browser
+4. curl-impersonate (e.g., `curl-chrome146`)
+5. Agent Browser
 5. Browser Use
 
 ## Agent Browser
 
 Connect to the host Chrome only; do not run Chrome in docker.
+
+## Browser Use
+
+If cli, use only cloud mode (`browser-use cloud`)
 
 ## Notes
 
@@ -53,6 +59,7 @@ Connect to the host Chrome only; do not run Chrome in docker.
   1. Defuddle (`npx defuddle`, see [Defuddle on GitHub](https://github.com/kepano/defuddle))
   2. `markdownify` cli and python lib (not `python -m markdownify`)
   3. FireCrawl Fetch/scrape
+  4. `lightpanda` if web page js-heavy
 
 - Documents (pdf/docx/pptx/etc.):
   1. LiteParse (`lit`) by LlamaIndex; see `liteparse*` skills
@@ -72,3 +79,9 @@ Connect to the host Chrome only; do not run Chrome in docker.
 ## Notes
 
 - Doing OCR set correct language(s), e.g., EN or RU
+
+# Specific
+
+- rzd.ru - regional restrictions, use curl-impersonate
+- rusprofile.ru - has active account through Browser Use
+- *.gov.ru и некоторые банки - используют национальный сертификат РФ, необходимо отключить проверку
