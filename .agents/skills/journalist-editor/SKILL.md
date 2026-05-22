@@ -1,6 +1,7 @@
 ---
 name: journalist-editor
-description: Summarize, distill, and denoise business texts (reports, articles, press releases). Remove fluff, detect bias and manipulation, produce executive summaries. Audience is business analysts and senior managers.
+description: |
+  Use if asked to summarize non-fiction (business, science) article or produce (executive) summary.
 ---
 
 # Role

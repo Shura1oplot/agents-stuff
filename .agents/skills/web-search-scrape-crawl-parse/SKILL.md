@@ -1,9 +1,10 @@
 ---
 name: web-search-scrape-crawl-parse
-description: Advanced tools and guidelines for web searching, scraping, crawling (Google, Firecrawl, Tavily, curl, etc.); parse documents and HTML
+description: |
+  Use to web search, scrape, crawl, parse and convert documents (pdf, docx, etc.) and HTML to Markdown; this skill has precedence over firecrawl, tavily, browser-use, agent-browser, llamaparse/lightparse and other such skills
 ---
 
-Ordered lists are arranged by priority descending.
+In this skill ordered lists are arranged by priority descending.
 
 # Tools availability check
 
@@ -14,10 +15,6 @@ Ordered lists are arranged by priority descending.
 - Lightpanda Browser: `lightpanda`
 
 Report any missing tools/MCPs.
-
-# Skills
-
-Use relevant skills, e.g., `firecrawl-*`.
 
 # Web search
 
@@ -37,8 +34,9 @@ Combine them for best result.
 2. Built-in fetch
 3. `curl`
 4. curl-impersonate (e.g., `curl-chrome146`)
-5. Agent Browser
-5. Browser Use
+5. `lightpanda` if web page js-heavy
+6. Agent Browser
+7. Browser Use
 
 ## Agent Browser
 
@@ -46,20 +44,19 @@ Connect to the host Chrome only; do not run Chrome in docker.
 
 ## Browser Use
 
-If cli, use only cloud mode (`browser-use cloud`)
+If cli, use only cloud mode (`browser-use cloud ...`)
 
 ## Notes
 
-- Some russian web sites (e.g., government portals, banks) could use a national certificate; disable TLS certificate check in this case
+- Some Russian web sites (e.g., government portals, banks) could use a national certificate; disable TLS certificate check in this case
 - For some Russian web sites (e.g., rzd.ru) there could be regional restrictions, use proxy (including residential)
 
 # Parse/convert to Markdown
 
 - HTML:
-  1. Defuddle (`npx defuddle`, see [Defuddle on GitHub](https://github.com/kepano/defuddle))
-  2. `markdownify` cli and python lib (not `python -m markdownify`)
+  1. Defuddle (`npx defuddle ...`, see [Defuddle on GitHub](https://github.com/kepano/defuddle))
+  2. `markdownify` cli (not `python -m markdownify`) and python lib
   3. FireCrawl Fetch/scrape
-  4. `lightpanda` if web page js-heavy
 
 - Documents (pdf/docx/pptx/etc.):
   1. LiteParse (`lit`) by LlamaIndex; see `liteparse*` skills

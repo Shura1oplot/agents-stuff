@@ -1,6 +1,7 @@
 ---
 name: research-analysis-modeling
-description: Business analysis, research, data analytics (gather, process, quality control), assumptions, financial and economic modeling
+description: |
+  Use for research, business analysis, data analytics, financial and economic modeling, working with data sources, assumptions and proxis, estimating and guessing
 ---
 
 # Skill purpose

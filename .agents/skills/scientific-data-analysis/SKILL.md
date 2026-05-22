@@ -1,6 +1,6 @@
 ---
 name: scientific-data-analysis
-description: Use when creating data dashboards, analytical reports, or any visualization that presents data-driven conclusions. Ensures statistical rigor and honest data presentation.
+description: Use when creating data dashboards, analytical reports, or any data visualization
 ---
 
 This skill ensures that data analysis and visualization follows scientific best practices. Apply these principles whenever building dashboards, reports, or visualizations that present data-driven insights.
