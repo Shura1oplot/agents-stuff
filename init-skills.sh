@@ -3,25 +3,49 @@
 set -euo pipefail
 
 
-THIS_SCRIPT_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-
-set +a
-# shellcheck disable=SC1091
-[[ -e $THIS_SCRIPT_DIR/.env ]] && source "$THIS_SCRIPT_DIR/.env"
-# shellcheck disable=SC1091
-[[ -e ./.env ]] && source ./.env
-set -a
+npx --yes skills update --global --yes
 
 
-mkdir -p ./.agents/skills
-mkdir -p ./.codex
-mkdir -p ./.claude
-[[ -e ./.codex/skills ]] || ln -s ./../.agents/skills ./.codex/skills
-[[ -e ./.claude/skills ]] || ln -s ./../.agents/skills ./.claude/skills
+npm --yes install --global agent-browser
+npx --yes skills add --global vercel-labs/agent-browser --yes
 
 
-for skill_path in "$THIS_SCRIPT_DIR"/.agents/skills/*; do
-    skill=$(basename "$skill_path")
-    [[ -e ./.agents/skills/$skill ]] \
-        || cp -r "$skill_path" ./.agents/skills/
-done
+curl -fsSL https://browser-use.com/cli/install.sh | bash
+npx --yes skills add --global browser-use/browser-use --yes
+
+
+npm --yes install --global firecrawl-cli
+npx --yes skills add --global firecrawl/cli --yes
+
+
+npm --yes install --global @llamaindex/liteparse
+npm --yes install --global @llamaindex/llama-cloud
+npx --yes skills add --global run-llama/llamaparse-agent-skills --yes
+
+
+uv tool install tavily-cli
+npx --yes skills add --global tavily-ai/skills --yes
+
+
+npx --yes skills add --global \
+    https://github.com/forrestchang/andrej-karpathy-skills \
+    --skill karpathy-guidelines --yes
+
+
+# uv tool install graphify
+# graphifyy install --platform codex
+# graphifyy install --platform claude
+
+
+brew install lightpanda-io/browser/lightpanda
+npx --yes skills add https://github.com/lightpanda-io/agent-skill \
+    --skill Lightpanda --yes
+
+
+uv tool install 'parallel-web-tools[cli]'
+npx --yes skills add parallel-web/parallel-agent-skills \
+    --all --yes
+
+
+npm install -g @doist/todoist-cli
+td skill install --force universal
