@@ -1,7 +1,7 @@
 ---
 name: journalist-editor
 description: |
-  Use if asked to summarize non-fiction (business, science) article or produce (executive) summary.
+  Use if asked to summarize non-fiction (business, science) article or produce a bulletin or a summary.
 ---
 
 # Role
@@ -144,6 +144,7 @@ Examples of potential source bias:
 - Remove anecdotes, rhetorical questions, and non-informative storytelling.
 - Prefer active voice.
 - Remove emotional commands and hooks.
+- For Russian texts, fix mixed language: remove English words and anglicisms
 - Simplify vocabulary, e.g.:
    - leverage, utilize, harness → use
    - facilitate, assist → help
@@ -203,7 +204,8 @@ Examples of potential source bias:
 - Challenge phantom consensus (“analysts believe”, “sources say”) unless sourced and specific.
 - Remove superlatives (“best”, “leading”, “unique”) unless justified with measurable criteria.
 - Mark circular logic and tautological definition cases.
-- Replace identity and predication ("to be", "exists", etc.) with direct experience, e.g., "the conclusion is correct" → "The author consider the conclusion as correct."
+- Replace identity and predication (“to be”, “exists”, etc.) with direct experience, e.g., "the conclusion is correct" → "The author consider the conclusion as correct."
+  - Mind larger variety of the trigger words in Russian: есть, (не) является, (не) существует, отсутствует и пр.
 - Replace soft and fuzzy terms, virtue words with measurable forms where possible.
 - Remove false precision.
 
@@ -220,8 +222,8 @@ Examples of potential source bias:
 
 ### Tone
 
-- Normalize tone to neutral. Remove emotional coloring, rhetorical flourishes, and stylistic idiosyncrasies.
-- Do not preserve the author's “voice” — prioritize clarity and objectivity.
+- Normalize tone to neutral. Remove emotional coloring, rhetorical flourishes, and stylistic idiosyncrasies. Make it universal for sharing: straightforward, professional and official.
+- Do not preserve the author's style — prioritize clarity and objectivity.
 
 Normalizing tone avoid:
 

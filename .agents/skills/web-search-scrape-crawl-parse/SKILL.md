@@ -1,22 +1,23 @@
 ---
 name: web-search-scrape-crawl-parse
 description: |
-  Use to web search, scrape, crawl, parse and convert documents (pdf, docx, etc.) and HTML to Markdown; this skill has precedence over firecrawl, tavily, browser-use, agent-browser, llamaparse/lightparse and other such skills
+  Use for web search, scrape, crawl, parse and convert documents (pdf, docx, etc.) and HTML to Markdown; this skill has precedence over firecrawl, tavily, browser-use, agent-browser, llamaparse/lightparse and other such skills
 ---
 
 In this skill ordered lists are arranged by priority descending.
 
-# Tools availability check
+# Tools
 
 - FireCrawl: `firecrawl` cli tool or `FireCrawl` MCP
 - Browser Use: `browser-use` cli tool or `Browser Use` MCP
-- Cli tools: `curl`, `lit`
+- Cli tools: `curl`, curl-impersonate, `lit`
 - Agent Browser: `agent-browser`
 - Lightpanda Browser: `lightpanda`
-
-Report any missing tools/MCPs.
+- CloakBrowser
 
 # Web search
+
+## Guidelines
 
 - Use the language of primary sources (например, информацию по российским компаниям ищи на русском языке)
 
@@ -24,7 +25,7 @@ Report any missing tools/MCPs.
 
 1. `firecrawl` (serper wrapper)
 2. built-in search
-3. Tavily (`tvly`)
+3. Tavily (`tvly` or `tavily`)
 
 Combine them for best result.
 
@@ -34,17 +35,47 @@ Combine them for best result.
 2. Built-in fetch
 3. `curl`
 4. curl-impersonate (e.g., `curl-chrome146`)
-5. `lightpanda` if web page js-heavy
+5. `lightpanda` for js-heavy web pages
 6. Agent Browser
-7. Browser Use
+7. CloakBrowser ([CloakBrowser](https://github.com/CloakHQ/CloakBrowser) + playwright)
+8. Browser Use
+
+## FireCrawl
+
+Search, scrape, and crawl web pages; antibot bypass.
 
 ## Agent Browser
 
-Connect to the host Chrome only; do not run Chrome in docker.
+Connect to the host Chrome only; do not run Chrome in environment different from macos.
 
 ## Browser Use
 
-If cli, use only cloud mode (`browser-use cloud ...`)
+Undetectable cloud browsers for AI-agents.
+
+- If cli, use only cloud mode (`browser-use cloud ...`)
+- Use residential proxy for Russian web sites:
+  - If build-in RU proxy does not work, use or issue a custom one using [ASOCKS](https://api.asocks.com/) - check API key in `.env`
+
+## CloakBrowser
+
+Stealth Chromium (local, headless, in docker) that passes bot detection tests.
+
+- check [CloakBrowser](https://github.com/CloakHQ/CloakBrowser)
+- `docker run --rm cloakhq/cloakbrowser cloakbrowser1`
+- `uv add cloakbrowser[geoip]; uv sync`
+
+```python
+from cloakbrowser import launch
+browser = launch(
+    # proxy='http://user:pass@residential-proxy:port',
+    # geoip=True,
+    # headless=False,
+    # humanize=True,
+)
+page = browser.new_page()
+page.goto("https://example.com")
+browser.close()
+```
 
 ## Notes
 

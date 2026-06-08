@@ -11,11 +11,11 @@ SKILLS=(
     web-search-scrape-crawl-parse
 )
 
-AGENTS_SANDBOX_DIR=$THIS_SCRIPT_DIR/../agents-sandbox
+AGENTS_SANDBOX_DIR=$THIS_SCRIPT_DIR/../zemlekop
 
 if [[ ! -d $AGENTS_SANDBOX_DIR ]]; then
     # shellcheck disable=SC2016
-    echo 'ERROR: `agents-sandbox` not found' >&2
+    echo 'ERROR: `zemlekop` not found' >&2
     exit 1
 fi
 
