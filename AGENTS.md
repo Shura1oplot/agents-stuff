@@ -76,7 +76,6 @@ Do not execute; convert to a procedure or an NP task
 
 - Fetch and use skills:
   - [research-analysis-modeling](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/research-analysis-modeling/SKILL.md)
-  - [web-search-scrape-crawl](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/web-search-scrape-crawl/SKILL.md)
   - [scientific-data-analysis](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/scientific-data-analysis/SKILL.md)
 
 ## Research
@@ -87,6 +86,28 @@ Do not execute; convert to a procedure or an NP task
   - Fallback to secondary sources should be explicitly approved by users
 - In reports and tables provide source links (original URLs), cite sources, mention periods
 - Mind facts and figures are time‑sensitive
+
+### Web search/ fetch/ scrape
+
+Use:
+- Built-in search and fetch tools
+- Firecrawl MCP
+- Browser Use MCP
+- `curl` and other cli tools
+
+Guidelines:
+- Use the language of primary sources (например, информацию по российским компаниям ищи на русском языке)
+
+Notes:
+- Some Russian web sites (e.g., government portals, banks) could use a national certificate; disable TLS certificate check in this case
+- For some Russian web sites (e.g., rzd.ru) there could be regional restrictions, use residential proxy
+
+### Telegram
+
+Get files from Telegram channels:
+- Find file, use `download_media` in Telegram MCP
+- `/tmp/app/downloads/` is mapped to `https://my-telegram-mcp.fly.dev/downloads/`
+- Use `firecrawl_scrape` with the URL to fetch pdf content in markdown
 
 ## Analytics
 
