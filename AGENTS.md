@@ -99,6 +99,7 @@ Guidelines:
 Notes:
 - Some Russian web sites (e.g., government portals, banks) could use a national certificate; disable TLS certificate check in this case
 - For some Russian web sites (e.g., rzd.ru) there could be regional restrictions, use residential proxy
+- Your docker environment (code interpreter) might not have internet access, check first
 
 ### Telegram MCP
 
