@@ -55,7 +55,7 @@ Before executing classify task:
 3. Save artifacts to a file
 4. Execute task
 5. Check the result according to the checklist, reiterate if necessary
-6. Report to users: result, selected methodology/framework, summary of approach, checklist
+6. Report to users: result, selected methodology/framework, approach summary, checklist
 
 ### 2. NP task
 
@@ -76,7 +76,6 @@ Do not execute; convert to a procedure or an NP task
 
 - Fetch and use skills:
   - [research-analysis-modeling](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/research-analysis-modeling/SKILL.md)
-  - [scientific-data-analysis](https://raw.githubusercontent.com/Shura1oplot/agents-stuff/refs/heads/main/.agents/skills/scientific-data-analysis/SKILL.md)
 
 ## Research
 
@@ -93,7 +92,6 @@ Use:
 - Built-in search and fetch tools
 - Firecrawl MCP
 - Browser Use MCP
-- `curl` and other cli tools
 
 Guidelines:
 - Use the language of primary sources (например, информацию по российским компаниям ищи на русском языке)
@@ -102,12 +100,71 @@ Notes:
 - Some Russian web sites (e.g., government portals, banks) could use a national certificate; disable TLS certificate check in this case
 - For some Russian web sites (e.g., rzd.ru) there could be regional restrictions, use residential proxy
 
-### Telegram
+### Telegram MCP
 
 Get files from Telegram channels:
 - Find file, use `download_media` in Telegram MCP
 - `/tmp/app/downloads/` is mapped to `https://my-telegram-mcp.fly.dev/downloads/`
 - Use `firecrawl_scrape` with the URL to fetch pdf content in markdown
+
+### Sources
+
+#### Russia
+
+Note: `@xxx` is telegram channel
+
+Market outlooks and analytics:
+- @proeconomics
+- @expertosphere and "Экспертосфера Плюс"
+- @fundamentalinvestments
+- @businessincognita
+- @kladovye
+- ma-research.ru (paid)
+- businesstat.ru (paid)
+- marketing.rbc.ru
+
+Automotive and trucking:
+- autostat.ru
+- avtostat-info.ru
+- ati.su
+
+Companies info:
+- tadviser.ru
+- e-disclosure.ru
+- rusprofile.ru (paid)
+
+Government statistics:
+- rosstat.gov.ru (broken TLS cert)
+
+Railway:
+- rzd.ru (regional restriction, use Russian residential proxy)
+- f-husainov.livejournal.com
+- @Vgudok
+- @telerzd
+- @gruz0potok
+- @logisticsscm
+- @logistved
+- @antidigital
+- @logscm
+- @ipem_research
+
+Agriculture:
+- @pole_journal
+- @agroinvestor
+- @agro_nomika
+
+Metallurgy:
+- @nerzhavey
+- @Metals_Mining
+- @prometallinfo
+
+Oil and gas, petrochemical:
+- @papagaz
+- @gazmyaso
+- @oil_capital
+- @Burovaia
+- @nefte_baza
+- @sdc_channel
 
 ## Analytics
 
@@ -124,11 +181,11 @@ Get files from Telegram channels:
 
 ## Reporting
 
-- Charts: look at them, check they are correct and make sense
+- Charts: look at them, check they are correct, make sense, no visual glitches
 
 # Coding
 
-- Write scripts, not enterprise software
+- Write simple scripts, not enterprise software
 - Follow the KISS principle; simplicity first
 - Hard cutover; no backward compatibility
 - No comments in code, make it self-explanatory
@@ -136,75 +193,16 @@ Get files from Telegram channels:
     - No features or flexibility beyond what was asked
     - No abstractions for single-use code
     - No configurability that was not requested
-- Refer to [karpathy-guidelines](https://raw.githubusercontent.com/multica-ai/andrej-karpathy-skills/refs/heads/main/skills/karpathy-guidelines/SKILL.md) skill
+- No outdated/abandoned libraries
+- Process JSON-like data using models (`pydantic` in python or `jq` in bash)
 
 Before coding:
-- Fetch up-to-date documentation from Context7 (MCP) and DeepWiki (MCP), consult with official documentation
+- Fetch up-to-date documentation from Context7 MCP and DeepWiki MCP, consult with official documentation
 
 After coding:
 - Check the code follows the coding guidelines and quality standards
 - Verify the codebase does not contain the forbidden techniques
 - Refactor if needed
-
-## Python
-
-- Target: python >=3.13,<3.14
-- No outdated/abandoned libraries
-- Always start with defining `pydantic` data models
-- If sync and async are available, prefer async
-
-### Templates
-
-```python
-#!/usr/bin/env python3
-
-from __future__ import annotations
-
-import sys
-
-from dotenv import load_dotenv
-
-
-_ = load_dotenv()
-
-
-def main(argv: list[str] = sys.argv) -> int | None:
-    _ = argv  # remove if `argv` is used, keep otherwise
-    # your code here
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
-```
-
-```python
-#!/usr/bin/env python3
-
-from __future__ import annotations
-
-import sys
-import asyncio
-
-from dotenv import load_dotenv
-
-
-_ = load_dotenv()
-
-
-async def amain(argv: list[str] = sys.argv) -> int | None:
-    _ = argv  # remove if `argv` is used, keep otherwise
-    # your code here
-    return 0
-
-
-def main(argv: list[str] = sys.argv) -> int | None:
-    return asyncio.run(amain(argv))
-
-
-if __name__ == "__main__":
-    sys.exit(main())
-```
 
 ### Forbidden techniques
 
@@ -215,39 +213,3 @@ if __name__ == "__main__":
 - Monkey patching
 - Linter messages silencing
 - Type casts (e.g., `typing.cast`)
-
-### Type annotation
-
-- You MUST use type annotations
-  - Modern, e.g., `list[str]`, not `List[str]`
-- Use `TypedDict` while dealing with dynamic `**kwargs` construction
-
-### Data
-
-- Any JSON-like objects process through `pydantic` models
-
-### Libraries
-
-- `pydantic` instead of `dataclass`
-- Prefer `httpx` over `requests`/`urllib3`
-- Prefer `polars` over `pandas` for large data files
-
-## Bash
-
-- Bash v4+ with GNU tools and extensions
-- You must use `jq` for JSON
-
-### Template
-
-```bash
-#!/usr/bin/env bash
-
-set -euo pipefail
-
-set +a
-# shellcheck disable=SC1091
-[[ -f ./.env ]] && source ./.env
-set -a
-
-# your code here
-```
