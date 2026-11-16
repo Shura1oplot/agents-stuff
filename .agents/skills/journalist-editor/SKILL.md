@@ -1,8 +1,14 @@
 ---
 name: journalist-editor
-description: |
-  Use if asked to summarize non-fiction (business, science) article or produce a bulletin or a summary.
+description: Use if asked to summarize a non-fiction article or produce a bulletin or summary.
 ---
+
+<!-- zemlekop: users-managed -->
+
+# Precedences
+
+- `language-style` > `journalist-editor`.
+- `consulting-presentation` > `journalist-editor`.
 
 # Role
 
@@ -14,11 +20,11 @@ You are given a text. Summarize it by extracting the core messages and removing 
 
 # Guidelines
 
-- In this skill “e.g.” and “etc.” indicate incomplete lists. Extend examples.
 - Work with text as it is. Do not add new facts or assumptions. Do not imply or infer what is not explicitly stated.
 - Do not change numbers, units, dates, currency, names, or quoted text.
 - Preserve attribution and modality (“may”, “likely”, “reportedly”, “according to X”).
-- For outputs use the primary language of the given text.
+- For outputs, use the primary language of the given text. Do not translate the source into the session language. This rule takes precedence over the single-language rule of `AGENTS.md`. Translate only when users ask for it.
+- When the output is a client deliverable, the wording rules of `language-style` take precedence over this skill.
 
 # Instruction
 
@@ -31,10 +37,10 @@ You are given a text. Summarize it by extracting the core messages and removing 
 7. Review
 
 - Denoise is a language-style transformation step; it must not change meaning.
-- Decompose and Analyze are analytical step; do not modify the text.
+- Decompose and Analyze are analytical steps; do not modify the text.
 - Cleanse, Distill, and Synthesize are text transformation steps.
 
-You must not skip any of these steps as it may lead to meaning drift and low quality result.
+You must not skip any of these steps, as it may lead to meaning drift and a low-quality result.
 
 ## 1. Denoise
 
@@ -99,6 +105,7 @@ Noise types and common markers:
    - Jargon without operational meaning when plain language exists
 
 7. Texts produced by AI
+
    - Uncommon emoji
 
 ## 2. Decompose
@@ -127,15 +134,18 @@ Detect (by descending of importance):
 7. Dark or manipulative rhetoric
 8. Propaganda techniques
 
-Examples of potential source bias:
+Use the canonical potential-source-bias examples in [`research-analysis-modeling`](../research-analysis-modeling/references/source-assessment.md), section 2, or the following if the document is not available:
 
-- Audited reporting can still be managed; trends may differ between IFRS and local standards (e.g., GAAP, RAS/РСБУ).
-- Government data may reflect political incentives.
-- Specialized agencies can diverge due to methodology differences.
-- Generic aggregators may oversimplify or contain methodological errors.
-- Experts may be too conservative or too optimistic.
-- Consultants may cherry-pick to support commercial narratives.
-- Company forecasts may be optimized for investors or customers.
+1. Client-provided data can contain manipulation if it is not audited.
+2. Audited reporting can still be managed. Trends can differ between IFRS and local standards (GAAP, RAS/РСБУ).
+3. Official statistics can reflect political incentives.
+4. Professional magazines can prefer newsbreaks to statistical accuracy and objectivity.
+5. Generic aggregators can oversimplify and contain methodological errors.
+6. Experts can be too conservative or too optimistic.
+7. Consultants can cherry-pick to support commercial narratives.
+8. Company forecasts can be optimized for investors or customers.
+
+Review every example relevant to the source.
 
 ## 4. Cleanse
 
@@ -144,55 +154,57 @@ Examples of potential source bias:
 - Remove anecdotes, rhetorical questions, and non-informative storytelling.
 - Prefer active voice.
 - Remove emotional commands and hooks.
-- For Russian texts, fix mixed language: remove English words and anglicisms
+- For Russian texts, fix mixed language: remove English words and anglicisms.
 - Simplify vocabulary, e.g.:
-   - leverage, utilize, harness → use
-   - facilitate, assist → help
-   - streamline → simplify
-   - delve → look
-   - navigate → handle
-   - unlock → find
-   - foster → build
-   - landscape → field
-   - paradigm → approach
-   - realm → area
-   - seamless → smooth
-   - holistic → full
-   - nuanced → specific
-   - spearhead → lead
-   - robust → solid
-   - cultivate → grow
-   - intricate → complex
-   - garner → get
-   - showcase → show
-   - underscore → show
-   - reimagine → adjust/upgrade
+  - leverage, utilize, harness → use
+  - facilitate, assist → help
+  - streamline → simplify
+  - delve → look
+  - navigate → handle
+  - unlock → find
+  - foster → build
+  - landscape → field
+  - paradigm → approach
+  - realm → area
+  - seamless → smooth
+  - holistic → full
+  - nuanced → specific
+  - spearhead → lead
+  - robust → solid
+  - cultivate → grow
+  - intricate → complex
+  - garner → get
+  - showcase → show
+  - underscore → show
+  - reimagine → adjust/upgrade
 - Specify vocabulary based on the context, e.g.:
-   - game-changer
-   - ecosystem
-   - synergy
-   - deep dive
-   - vibrant
-   - fast-paced
+  - game-changer
+  - ecosystem
+  - synergy
+  - deep dive
+  - vibrant
+  - fast-paced
+  - talent
+  - to shape
 - Remove buzzword adjectives, e.g.:
-   - strategic
-   - fundament
-   - essential
-   - ultimate
-   - crucial
-   - notable
-   - practical
-   - pragmatic
-   - holistic
-   - innovative
-   - tailored
-   - agile
-   - flexible
-   - modern
-   - dynamic
-   - impactful
-   - actionable
-   - data-driven
+  - strategic
+  - fundament
+  - essential
+  - ultimate
+  - crucial
+  - notable
+  - practical
+  - pragmatic
+  - holistic
+  - innovative
+  - tailored
+  - agile
+  - flexible
+  - modern
+  - dynamic
+  - impactful
+  - actionable
+  - data-driven
 
 ## 5. Distill
 
@@ -204,7 +216,7 @@ Examples of potential source bias:
 - Challenge phantom consensus (“analysts believe”, “sources say”) unless sourced and specific.
 - Remove superlatives (“best”, “leading”, “unique”) unless justified with measurable criteria.
 - Mark circular logic and tautological definition cases.
-- Replace identity and predication (“to be”, “exists”, etc.) with direct experience, e.g., "the conclusion is correct" → "The author consider the conclusion as correct."
+- Replace identity and predication (“to be”, “exists”, etc.) with direct experience, e.g., “the conclusion is correct” → “The author considers the conclusion correct.”
   - Mind larger variety of the trigger words in Russian: есть, (не) является, (не) существует, отсутствует и пр.
 - Replace soft and fuzzy terms, virtue words with measurable forms where possible.
 - Remove false precision.
@@ -225,7 +237,7 @@ Examples of potential source bias:
 - Normalize tone to neutral. Remove emotional coloring, rhetorical flourishes, and stylistic idiosyncrasies. Make it universal for sharing: straightforward, professional and official.
 - Do not preserve the author's style — prioritize clarity and objectivity.
 
-Normalizing tone avoid:
+When normalizing the tone, avoid:
 
 - Jargon, buzzword adjectives, bizspeak, irony, sarcasm
 - Parenthetical asides
@@ -246,7 +258,8 @@ Normalizing tone avoid:
 
 Reread both initial and resulted texts.
 
-Check checklist: 
+Check checklist:
+
 - [ ] Core messages are preserved, no meaning drift
 - [ ] Important details are preserved
 - [ ] Nothing outside the initial text is added (except explicitly marked editor notes)
@@ -257,7 +270,7 @@ Use this output format unless the user redefines it.
 
 - Title: One sentence stating the key message.
 - Body: Structured bullet points with the core information.
-- Editor notes: what would add value based on the analysis (step 3, "Detect" section). Optional, up to 3 bullet points. Do not repeat the content of the news item. Mind importance.
+- Editor notes: what would add value based on the analysis (step 3, “Detect” section). Optional, up to 3 bullet points. Do not repeat the content of the news item. Mind importance.
 
 Follow this template if another is not specified by the user:
 
